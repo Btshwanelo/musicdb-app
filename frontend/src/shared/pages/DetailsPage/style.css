@@ -7,6 +7,7 @@
   grid-auto-flow: row;
   justify-content: stretch;
   justify-items: stretch;
+  min-height: 100vh;
   grid-template-areas: "navbar" "cards";
 }
 
@@ -69,6 +70,11 @@
 .artist-section .artist-info {
   grid-area: artist-info;
   height: 300px;
+}
+.artist-section .artist-info div {
+  position: absolute;
+  padding: 50px 0 0 100px;
+  width: 400px;
 }
 .artist-section .artist-info img {
   width: 100%;

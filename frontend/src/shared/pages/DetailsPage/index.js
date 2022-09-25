@@ -18,6 +18,14 @@ const DetailsPage = (props) => {
       <div className="main-section">
         <div className="artist-section">
           <div className="artist-info">
+            <div>
+              <h4>Burna Boy</h4>
+              <p>382K fans</p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
             <img src="https://via.placeholder.com/150" alt="Avatar" />
           </div>
           <div className="top-tracks">
