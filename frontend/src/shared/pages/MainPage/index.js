@@ -24,7 +24,7 @@ const MainPage = (props) => {
               <p>03:00</p>
             </div>
             <p>By Burna Boy</p>
-            <p>Impact of Intrisic</p>
+            <h4>Impact of Intrisic</h4>
           </div>
         </div>
       </div>

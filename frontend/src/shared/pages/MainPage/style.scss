@@ -70,16 +70,28 @@
   }
 
   &-container {
-    padding: 2px 16px;
+    padding: 15px;
 
     & div {
       display: flex;
       flex-direction: row;
+      margin-bottom: 5px;
 
       & h4 {
         flex-grow: 1;
         margin: 0;
       }
+
+      & p {
+        margin: 0;
+      }
+    }
+
+    & p {
+      margin: 5px 0;
+    }
+    & h4 {
+      margin: 5px 0;
     }
   }
 }

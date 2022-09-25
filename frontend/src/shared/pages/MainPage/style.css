@@ -59,13 +59,23 @@
   width: -webkit-fill-available;
 }
 .cards-container {
-  padding: 2px 16px;
+  padding: 15px;
 }
 .cards-container div {
   display: flex;
   flex-direction: row;
+  margin-bottom: 5px;
 }
 .cards-container div h4 {
   flex-grow: 1;
   margin: 0;
+}
+.cards-container div p {
+  margin: 0;
+}
+.cards-container p {
+  margin: 5px 0;
+}
+.cards-container h4 {
+  margin: 5px 0;
 }/*# sourceMappingURL=style.css.map */
