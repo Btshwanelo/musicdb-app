@@ -7,7 +7,7 @@ const MainPage = (props) => {
   return (
     <div className="main">
       <div className="navbar">
-        <div className="navbar-logo">Logo</div>
+        <div className="navbar-logo">LOGO</div>
         <div className="navbar-search">
           <button>
             <SearchIcon />
@@ -19,64 +19,12 @@ const MainPage = (props) => {
         <div className="cards-card">
           <img src="https://via.placeholder.com/150" alt="Avatar" />
           <div className="cards-container">
-            <h4>
-              <b>John Doe</b>
-            </h4>
-            <p>Architect & Engineer</p>
-          </div>
-        </div>
-        <div className="cards-card">
-          <img src="https://via.placeholder.com/150" alt="Avatar" />
-          <div className="cards-container">
-            <h4>
-              <b>John Doe</b>
-            </h4>
-            <p>Architect & Engineer</p>
-          </div>
-        </div>
-        <div className="cards-card">
-          <img src="https://via.placeholder.com/150" alt="Avatar" />
-          <div className="cards-container">
-            <h4>
-              <b>John Doe</b>
-            </h4>
-            <p>Architect & Engineer</p>
-          </div>
-        </div>
-        <div className="cards-card">
-          <img src="https://via.placeholder.com/150" alt="Avatar" />
-          <div className="cards-container">
-            <h4>
-              <b>John Doe</b>
-            </h4>
-            <p>Architect & Engineer</p>
-          </div>
-        </div>
-        <div className="cards-card">
-          <img src="https://via.placeholder.com/150" alt="Avatar" />
-          <div className="cards-container">
-            <h4>
-              <b>John Doe</b>
-            </h4>
-            <p>Architect & Engineer</p>
-          </div>
-        </div>
-        <div className="cards-card">
-          <img src="https://via.placeholder.com/150" alt="Avatar" />
-          <div className="cards-container">
-            <h4>
-              <b>John Doe</b>
-            </h4>
-            <p>Architect & Engineer</p>
-          </div>
-        </div>
-        <div className="cards-card">
-          <img src="https://via.placeholder.com/150" alt="Avatar" />
-          <div className="cards-container">
-            <h4>
-              <b>John Doe</b>
-            </h4>
-            <p>Architect & Engineer</p>
+            <div>
+              <h4>Miss you bad</h4>
+              <p>03:00</p>
+            </div>
+            <p>By Burna Boy</p>
+            <p>Impact of Intrisic</p>
           </div>
         </div>
       </div>
