@@ -8,8 +8,8 @@
   justify-content: stretch;
   justify-items: stretch;
   grid-template-areas:
-    "navbar"
-    "cards";
+    'navbar'
+    'cards';
 }
 
 .detail-page .navbar {
@@ -182,8 +182,8 @@
     justify-content: stretch;
     justify-items: stretch;
     grid-template-areas:
-      "artist-section "
-      "albums-section";
+      'artist-section '
+      'albums-section';
   }
 
   .artist-section {
@@ -195,7 +195,7 @@
     grid-auto-flow: row;
     justify-content: stretch;
     justify-items: stretch;
-    grid-template-areas: "artist-info top-tracks";
+    grid-template-areas: 'artist-info top-tracks';
     height: 350px;
 
     .artist-info {

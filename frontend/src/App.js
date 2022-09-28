@@ -1,7 +1,7 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 
-import { appRoutes } from "./shared/assets/routes";
+import { appRoutes } from './shared/assets/routes';
 
 function App() {
   return (

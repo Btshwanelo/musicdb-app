@@ -1,3 +1,3 @@
-import { BiSearch } from "react-icons/bi";
+import { BiSearch } from 'react-icons/bi';
 
 export const SearchIcon = () => <BiSearch />;

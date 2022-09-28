@@ -1,7 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { SearchIcon } from "../../assets/icons";
-import "./style.css";
+import PropTypes from 'prop-types';
+import React from 'react';
+
+import { SearchIcon } from '../../shared/assets/icons';
+import './style.css';
 
 const DetailsPage = (props) => {
   return (
@@ -23,8 +24,8 @@ const DetailsPage = (props) => {
               <h4>Burna Boy</h4>
               <p className="fans-count">382K fans</p>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua.
               </p>
             </div>
           </div>

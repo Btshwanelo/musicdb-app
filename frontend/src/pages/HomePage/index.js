@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
-import "./style.css";
-import { SearchIcon } from "../../assets/icons";
-import axios from "axios";
+import axios from 'axios';
+import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
+
+import { SearchIcon } from '../../shared/assets/icons';
+import './style.css';
 
 const MainPage = (props) => {
   const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useState([]);
-  const [searchTitle, setSearchTitle] = useState("");
+  const [searchTitle, setSearchTitle] = useState('');
 
   useEffect(
     (searchTitle) => {

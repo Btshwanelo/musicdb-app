@@ -7,7 +7,7 @@
   grid-auto-flow: row;
   justify-content: stretch;
   justify-items: stretch;
-  grid-template-areas: "navbar" "cards";
+  grid-template-areas: 'navbar' 'cards';
 }
 
 .navbar {
@@ -112,4 +112,4 @@
     grid-template-columns: repeat(3, 1fr);
     padding: 20px 20%;
   }
-}/*# sourceMappingURL=style.css.map */
+} /*# sourceMappingURL=style.css.map */
