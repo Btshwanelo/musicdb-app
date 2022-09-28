@@ -18,6 +18,7 @@ const DetailsPage = (props) => {
       <div className="main-section">
         <div className="artist-section">
           <div className="artist-info">
+            <img src="https://via.placeholder.com/150" alt="Avatar" />
             <div>
               <h4>Burna Boy</h4>
               <p className="fans-count">382K fans</p>
@@ -26,7 +27,6 @@ const DetailsPage = (props) => {
                 eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </p>
             </div>
-            <img src="https://via.placeholder.com/150" alt="Avatar" />
           </div>
           <div className="top-tracks">
             <h4>Top tracks</h4>
@@ -53,6 +53,13 @@ const DetailsPage = (props) => {
         <div className="albums-section">
           <h2>Albums</h2>
           <div className="album-cards">
+            <div className="cards-card">
+              <img src="https://via.placeholder.com/150" alt="Avatar" />
+              <div className="cards-container">
+                <h4>Impact of Intrisic</h4>
+                <p>2018</p>
+              </div>
+            </div>
             <div className="cards-card">
               <img src="https://via.placeholder.com/150" alt="Avatar" />
               <div className="cards-container">
