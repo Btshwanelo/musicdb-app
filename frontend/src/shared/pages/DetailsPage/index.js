@@ -20,7 +20,7 @@ const DetailsPage = (props) => {
           <div className="artist-info">
             <div>
               <h4>Burna Boy</h4>
-              <p>382K fans</p>
+              <p className="fans-count">382K fans</p>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -32,7 +32,8 @@ const DetailsPage = (props) => {
             <h4>Top tracks</h4>
             <ul>
               <li>
-                1. You are my lady remastered <span>03:00</span>
+                <p>1. You are my lady remastered </p>
+                <span>03:00</span>
               </li>
               <li>
                 2. You are my lady remastered <span>03:00</span>
