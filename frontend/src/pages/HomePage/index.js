@@ -3,15 +3,27 @@ import { isEmpty } from 'lodash';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-import { getArtists } from '../../reduxSlices/artistSlice';
+import { getArtistInfo, getArtists } from '../../reduxSlices/artistSlice';
 import { SearchIcon } from '../../shared/assets/icons';
 import './style.css';
 
 const MainPage = (props) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [searchValue, setSearchValue] = useState('');
-  const { artists } = useSelector((state) => state.artists);
+  const { artists, artistInfo } = useSelector((state) => state.artists);
+
+  useEffect(() => {
+    !isEmpty(artistInfo) && navigate(`detailed/${artistInfo.id}`);
+  }, [artistInfo]);
+
+  const handleViewDetails = (artistId) => {
+    if (!artistId) return null;
+    dispatch(getArtistInfo(artistId));
+  };
 
   useEffect(() => {
     dispatch(getArtists(searchValue));
@@ -35,50 +47,23 @@ const MainPage = (props) => {
         </div>
       </div>
       <div className="cards">
-        <div className="cards-card">
-          <img src="https://via.placeholder.com/150" alt="Avatar" />
-          <div className="cards-container">
-            <div>
-              <h4>Miss you bad</h4>
-              <p>03:00</p>
+        {artists &&
+          artists.map((item) => (
+            <div
+              className="cards-card"
+              key={item.id}
+              onClick={() => handleViewDetails(item.artist.id)}>
+              <img src={item.album.cover} alt="Avatar" />
+              <div className="cards-container">
+                <div>
+                  <h4>{item.title_short}</h4>
+                  <p>{item.duration}</p>
+                </div>
+                <p>By {item.artist.name}</p>
+                <h4>{item.album.title}</h4>
+              </div>
             </div>
-            <p>By Burna Boy</p>
-            <h4>Impact of Intrisic</h4>
-          </div>
-        </div>
-        <div className="cards-card">
-          <img src="https://via.placeholder.com/150" alt="Avatar" />
-          <div className="cards-container">
-            <div>
-              <h4>Miss you bad</h4>
-              <p>03:00</p>
-            </div>
-            <p>By Burna Boy</p>
-            <h4>Impact of Intrisic</h4>
-          </div>
-        </div>
-        <div className="cards-card">
-          <img src="https://via.placeholder.com/150" alt="Avatar" />
-          <div className="cards-container">
-            <div>
-              <h4>Miss you bad</h4>
-              <p>03:00</p>
-            </div>
-            <p>By Burna Boy</p>
-            <h4>Impact of Intrisic</h4>
-          </div>
-        </div>
-        <div className="cards-card">
-          <img src="https://via.placeholder.com/150" alt="Avatar" />
-          <div className="cards-container">
-            <div>
-              <h4>Miss you bad</h4>
-              <p>03:00</p>
-            </div>
-            <p>By Burna Boy</p>
-            <h4>Impact of Intrisic</h4>
-          </div>
-        </div>
+          ))}
       </div>
     </div>
   );
