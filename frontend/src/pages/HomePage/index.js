@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { getAlbums, getArtistInfo, getArtists, getTopTracks } from '../../reduxSlices/artistSlice';
 import { SearchIcon } from '../../shared/assets/icons';
+import ArtistCard from '../../shared/components/ArtistCard';
+import Navbar from '../../shared/components/Navbar';
 import './style.css';
 
 const MainPage = (props) => {
@@ -28,58 +30,38 @@ const MainPage = (props) => {
   useEffect(() => {
     dispatch(getArtists(searchValue));
   }, [dispatch, searchValue]);
-console.log(artists)
+  console.log(artists);
   return (
     <div className="main">
-      <div className="navbar">
-        <div className="navbar-logo" onClick={() => navigate('/')}>
-          LOGO
+      <Navbar searchValue={searchValue} setSearchValue={setSearchValue} />
+      {loading && (
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <h1>Loading...</h1>
         </div>
-        <div className="navbar-search">
-          <input
-            type="text"
-            placeholder="Search.."
-            value={searchValue}
-            name="search"
-            onChange={(e) => setSearchValue(e.target.value)}
-          />
-          <button>
-            <SearchIcon />
-          </button>
+      )}
+      {error && (
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <h1>{error}</h1>
         </div>
-      </div>
-       {loading && (
-          <div>
-            <h1>Loading...</h1>
-          </div>
-        )}
-        {error && (
-          <div>
-            <h1>{error}</h1>
-          </div>
-        )}
-        {artists === undefined && (
-          <div>
-            <h1>Search for a song...</h1>
-          </div>
-        )}
+      )}
+      {artists === undefined && (
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <h1>Search for a song</h1>
+        </div>
+      )}
       <div className="cards">
-          {artists &&
+        {artists &&
           artists.map((item) => (
-            <div
-              className="cards-card"
+            <ArtistCard
               key={item.id}
-              onClick={() => handleViewDetails(item.artist.id)}>
-              <img src={item.album.cover} alt="Avatar" />
-              <div className="cards-container">
-                <div>
-                  <h4>{item.title_short}</h4>
-                  <p>{item.duration}</p>
-                </div>
-                <p>By {item.artist.name}</p>
-                <h4>{item.album.title}</h4>
-              </div>
-            </div>
+              albumtitle={item.album.title}
+              albumCover={item.album.cover}
+              artistId={item.artist.id}
+              artistName={item.artist.name}
+              trackTitle={item.title_short}
+              trackDuration={item.duration}
+              handleViewDetails={handleViewDetails}
+            />
           ))}
       </div>
     </div>
