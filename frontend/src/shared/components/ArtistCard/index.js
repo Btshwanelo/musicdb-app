@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-
+import {durationToRatio} from '../../utils/index'
 const ArtistCard = ({
   albumtitle,
   albumCover,
@@ -16,7 +16,7 @@ const ArtistCard = ({
       <div className="cards-container">
         <div>
           <h4>{trackTitle}</h4>
-          <p>{trackDuration}</p>
+          <p>{durationToRatio(trackDuration)}</p>
         </div>
         <p>By {artistName}</p>
         <h4>{albumtitle}</h4>

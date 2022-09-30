@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const TopTrack = ({trackDuration, trackTite, index}) => {
+const TopTrack = ({ trackDuration, trackTite, index }) => {
   return (
-    <li >
+    <li>
       <p>
         {index + 1}. {trackTite}{' '}
       </p>

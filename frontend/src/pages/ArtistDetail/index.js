@@ -1,13 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import AlbumCard from '../../shared/components/AlbumCard';
-import ArtistInfo from '../../shared/components/ArtistInfo';
-import Navbar from '../../shared/components/Navbar';
-import TopTrack from '../../shared/components/TopTracks';
+import { AlbumCard, ArtistInfo, Navbar, TopTrack } from '../../shared/components';
+import { durationToRatio } from '../../shared/utils/index';
 import './style.css';
 
-const DetailsPage = (props) => {
+const DetailsPage = () => {
   const { artistInfo, topTracks, albums } = useSelector((state) => state.artists);
 
   return (
@@ -27,7 +25,7 @@ const DetailsPage = (props) => {
                 topTracks.map((item, index) => (
                   <TopTrack
                     key={item.id}
-                    trackDuration={item.duration}
+                    trackDuration={durationToRatio(item.duration)}
                     trackTite={item.title}
                     index={index}
                   />
@@ -53,7 +51,5 @@ const DetailsPage = (props) => {
     </div>
   );
 };
-
-DetailsPage.propTypes = {};
 
 export default DetailsPage;

@@ -4,12 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { getAlbums, getArtistInfo, getArtists, getTopTracks } from '../../reduxSlices/artistSlice';
-import { SearchIcon } from '../../shared/assets/icons';
-import ArtistCard from '../../shared/components/ArtistCard';
-import Navbar from '../../shared/components/Navbar';
+import { ArtistCard, Navbar } from '../../shared/components';
 import './style.css';
 
-const MainPage = (props) => {
+const MainPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -30,7 +28,7 @@ const MainPage = (props) => {
   useEffect(() => {
     dispatch(getArtists(searchValue));
   }, [dispatch, searchValue]);
-  console.log(artists);
+
   return (
     <div className="main">
       <Navbar searchValue={searchValue} setSearchValue={setSearchValue} />
@@ -67,7 +65,5 @@ const MainPage = (props) => {
     </div>
   );
 };
-
-MainPage.propTypes = {};
 
 export default MainPage;
