@@ -1,16 +1,21 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { SearchIcon } from '../../shared/assets/icons';
 import './style.css';
 
 const DetailsPage = (props) => {
+  let navigate = useNavigate();
+
   const { artistInfo, topTracks, albums } = useSelector((state) => state.artists);
   return (
     <div className="detail-page">
       <div className="navbar">
-        <div className="navbar-logo">LOGO</div>
+        <button className="navbar-logo" onClick={() => navigate('/')}>
+          LOGO
+        </button>
         <div className="navbar-search">
           <button>
             <SearchIcon />

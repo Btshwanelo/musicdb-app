@@ -107,6 +107,8 @@
     }
 
     &-search {
+      display: flex;
+      flex-flow: row-reverse;
       & input {
         display: block;
       }
@@ -128,6 +130,8 @@
     }
 
     &-search {
+      display: flex;
+      flex-flow: row-reverse;
       & input {
         display: block;
       }

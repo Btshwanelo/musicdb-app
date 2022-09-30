@@ -7,7 +7,7 @@
   grid-auto-flow: row;
   justify-content: stretch;
   justify-items: stretch;
-  grid-template-areas: 'navbar' 'cards';
+  grid-template-areas: "navbar" "cards";
 }
 
 .navbar {
@@ -89,6 +89,10 @@
   .navbar-logo {
     margin: 0 20px 0 0;
   }
+  .navbar-search {
+    display: flex;
+    flex-flow: row-reverse;
+  }
   .navbar-search input {
     display: block;
   }
@@ -105,6 +109,10 @@
   .navbar-logo {
     margin: 0 20px 0 0;
   }
+  .navbar-search {
+    display: flex;
+    flex-flow: row-reverse;
+  }
   .navbar-search input {
     display: block;
   }
@@ -112,4 +120,4 @@
     grid-template-columns: repeat(3, 1fr);
     padding: 20px 20%;
   }
-} /*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */

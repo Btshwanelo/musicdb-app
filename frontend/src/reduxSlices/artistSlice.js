@@ -60,58 +60,50 @@ const artistSlice = createSlice({
   },
   extraReducers: {
     [getArtists.pending]: (state) => {
-      state.isLoading = true;
-      state.isError = false;
-      state.errorMessage = null;
+      state.loading = true;
+      state.error = null;
       state.artists = [];
       state.artistInfo = {};
     },
     [getArtists.fulfilled]: (state, action) => {
-      state.isLoading = false;
-      state.isError = false;
+      state.loading = false;
+      state.error = null;
       state.artists = action.payload.data;
       state.artistInfo = {};
-      state.errorMessage = null;
     },
     [getArtists.rejected]: (state) => {
-      state.isLoading = false;
-      state.isError = true;
-      state.errorMessage = 'Something went wrong';
+      state.loading = false;
+      state.error = 'Something went wrong';
       state.artists = [];
       state.artistInfo = {};
     },
     [getArtistInfo.pending]: (state) => {
-      state.isLoading = true;
-      state.isError = false;
-      state.errorMessage = null;
+      state.loading = true;
+      state.error = null;
       state.artists = [];
       state.artistInfo = {};
     },
     [getArtistInfo.fulfilled]: (state, action) => {
-      state.isLoading = false;
-      state.isError = false;
+      state.loading = false;
+      state.error = null;
       state.artistInfo = action.payload;
       state.artists = [];
-      state.errorMessage = null;
     },
     [getArtistInfo.rejected]: (state) => {
-      state.isLoading = false;
-      state.isError = true;
-      state.errorMessage = 'Something went wrong';
+      state.loading = false;
+      state.error = 'Something went wrong';
       state.artists = [];
       state.artistInfo = {};
     },
     [getAlbums.fulfilled]: (state, action) => {
       state.isLoading = false;
-      state.isError = false;
+      state.error = null;
       state.albums = action.payload.data;
-      state.errorMessage = null;
     },
     [getTopTracks.fulfilled]: (state, action) => {
-      state.isLoading = false;
-      state.isError = false;
+      state.loading = false;
+      state.error = null;
       state.topTracks = action.payload.data;
-      state.errorMessage = null;
     },
   }
 });

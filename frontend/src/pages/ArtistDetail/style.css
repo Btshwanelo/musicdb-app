@@ -7,7 +7,7 @@
   grid-auto-flow: row;
   justify-content: stretch;
   justify-items: stretch;
-  grid-template-areas: 'navbar' 'cards';
+  grid-template-areas: "navbar" "cards";
 }
 
 .detail-page .navbar {
@@ -157,7 +157,7 @@
     row-gap: 50px;
     justify-content: stretch;
     justify-items: stretch;
-    grid-template-areas: 'artist-section ' 'albums-section';
+    grid-template-areas: "artist-section " "albums-section";
   }
   .artist-section {
     grid-area: artist-section;
@@ -168,7 +168,7 @@
     grid-auto-flow: row;
     justify-content: stretch;
     justify-items: stretch;
-    grid-template-areas: 'artist-info top-tracks';
+    grid-template-areas: "artist-info top-tracks";
     height: 350px;
   }
   .artist-section .artist-info {
@@ -223,4 +223,4 @@
   .albums-section .album-cards {
     grid-template-columns: repeat(4, 1fr);
   }
-} /*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */

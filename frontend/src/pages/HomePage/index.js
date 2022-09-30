@@ -14,7 +14,7 @@ const MainPage = (props) => {
   const navigate = useNavigate();
 
   const [searchValue, setSearchValue] = useState('');
-  const { artists, artistInfo } = useSelector((state) => state.artists);
+  const { artists, artistInfo, loading, error } = useSelector((state) => state.artists);
 
   useEffect(() => {
     !isEmpty(artistInfo) && navigate(`detailed/${artistInfo.id}`);
@@ -30,11 +30,13 @@ const MainPage = (props) => {
   useEffect(() => {
     dispatch(getArtists(searchValue));
   }, [dispatch, searchValue]);
-
+  console.log(artists);
   return (
     <div className="main">
       <div className="navbar">
-        <div className="navbar-logo">LOGO</div>
+        <div className="navbar-logo" onClick={() => navigate('/')}>
+          LOGO
+        </div>
         <div className="navbar-search">
           <input
             type="text"
@@ -48,6 +50,21 @@ const MainPage = (props) => {
           </button>
         </div>
       </div>
+      {loading && (
+        <div>
+          <h1>Loading...</h1>
+        </div>
+      )}
+      {error && (
+        <div>
+          <h1>{error}</h1>
+        </div>
+      )}
+      {artists === undefined && (
+        <div>
+          <h1>Search for a song...</h1>
+        </div>
+      )}
       <div className="cards">
         {artists &&
           artists.map((item) => (
