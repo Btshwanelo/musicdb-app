@@ -8,6 +8,9 @@
 # testing
 /coverage
 
+# map files
+/.map
+
 # production
 /build
 
