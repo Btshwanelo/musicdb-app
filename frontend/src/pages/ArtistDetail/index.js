@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import { SearchIcon } from '../../shared/assets/icons';
 import './style.css';
 
 const DetailsPage = (props) => {
+  const { artistInfo, topTracks, albums } = useSelector((state) => state.artists);
   return (
     <div className="detail-page">
       <div className="navbar">
@@ -19,10 +21,10 @@ const DetailsPage = (props) => {
       <div className="main-section">
         <div className="artist-section">
           <div className="artist-info">
-            <img src="https://via.placeholder.com/150" alt="Avatar" />
+            <img src={artistInfo.picture_xl} alt="Avatar" />
             <div>
-              <h4>Burna Boy</h4>
-              <p className="fans-count">382K fans</p>
+              <h4>{artistInfo.name}</h4>
+              <p className="fans-count">{artistInfo.nb_fan}</p>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                 incididunt ut labore et dolore magna aliqua.
@@ -32,63 +34,31 @@ const DetailsPage = (props) => {
           <div className="top-tracks">
             <h4>Top tracks</h4>
             <ul>
-              <li>
-                <p>1. You are my lady remastered </p>
-                <span>03:00</span>
-              </li>
-              <li>
-                2. You are my lady remastered <span>03:00</span>
-              </li>
-              <li>
-                3. You are my lady remastered <span>03:00</span>
-              </li>
-              <li>
-                4. You are my lady remastered <span>03:00</span>
-              </li>
-              <li>
-                5. You are my lady remastered <span>03:00</span>
-              </li>
+              {topTracks &&
+                topTracks.map((item, index) => (
+                  <li key={item.id}>
+                    <p>
+                      {index + 1}. {item.title}{' '}
+                    </p>
+                    <span>{item.duration}</span>
+                  </li>
+                ))}
             </ul>
           </div>
         </div>
         <div className="albums-section">
           <h2>Albums</h2>
           <div className="album-cards">
-            <div className="cards-card">
-              <img src="https://via.placeholder.com/150" alt="Avatar" />
-              <div className="cards-container">
-                <h4>Impact of Intrisic</h4>
-                <p>2018</p>
-              </div>
-            </div>
-            <div className="cards-card">
-              <img src="https://via.placeholder.com/150" alt="Avatar" />
-              <div className="cards-container">
-                <h4>Impact of Intrisic</h4>
-                <p>2018</p>
-              </div>
-            </div>
-            <div className="cards-card">
-              <img src="https://via.placeholder.com/150" alt="Avatar" />
-              <div className="cards-container">
-                <h4>Impact of Intrisic</h4>
-                <p>2018</p>
-              </div>
-            </div>
-            <div className="cards-card">
-              <img src="https://via.placeholder.com/150" alt="Avatar" />
-              <div className="cards-container">
-                <h4>Impact of Intrisic</h4>
-                <p>2018</p>
-              </div>
-            </div>
-            <div className="cards-card">
-              <img src="https://via.placeholder.com/150" alt="Avatar" />
-              <div className="cards-container">
-                <h4>Impact of Intrisic</h4>
-                <p>2018</p>
-              </div>
-            </div>
+            {albums &&
+              albums.map((item) => (
+                <div className="cards-card" key={item.id}>
+                  <img src={item.cover} alt="Avatar" />
+                  <div className="cards-container">
+                    <h4>{item.title}</h4>
+                    <p>{item.release_date}</p>
+                  </div>
+                </div>
+              ))}
           </div>
         </div>
       </div>

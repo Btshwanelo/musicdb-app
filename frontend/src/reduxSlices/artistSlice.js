@@ -7,7 +7,10 @@ const initialState = {
   artists: [],
   artistInfo: {},
   error: null,
-  loading: false
+  loading: false,
+  albums: [],
+  topTracks: [],
+
 };
 
 export const getArtists = createAsyncThunk('artist/getArtists', async (query, thunkAPI) => {
@@ -23,6 +26,24 @@ export const getArtists = createAsyncThunk('artist/getArtists', async (query, th
 export const getArtistInfo = createAsyncThunk('artist/getArtistInfo', async (artistId, thunkAPI) => {
   try {
     const resp = await axios(`/artist/${artistId}`);
+    return resp.data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue('something went wrong');
+  }
+});
+
+export const getTopTracks = createAsyncThunk('artist/getTopTracks', async (artistId, thunkAPI) => {
+  try {
+    const resp = await axios(`/artist/${artistId}/top`);
+    return resp.data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue('something went wrong');
+  }
+});
+
+export const getAlbums = createAsyncThunk('artist/getAlbums', async (artistId, thunkAPI) => {
+  try {
+    const resp = await axios(`/artist/${artistId}/albums`);
     return resp.data;
   } catch (error) {
     return thunkAPI.rejectWithValue('something went wrong');
@@ -79,7 +100,19 @@ const artistSlice = createSlice({
       state.errorMessage = 'Something went wrong';
       state.artists = [];
       state.artistInfo = {};
-    }
+    },
+    [getAlbums.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.isError = false;
+      state.albums = action.payload.data;
+      state.errorMessage = null;
+    },
+    [getTopTracks.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.isError = false;
+      state.topTracks = action.payload.data;
+      state.errorMessage = null;
+    },
   }
 });
 

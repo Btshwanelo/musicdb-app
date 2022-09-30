@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { getArtistInfo, getArtists } from '../../reduxSlices/artistSlice';
+import { getAlbums, getArtistInfo, getArtists, getTopTracks } from '../../reduxSlices/artistSlice';
 import { SearchIcon } from '../../shared/assets/icons';
 import './style.css';
 
@@ -23,6 +23,8 @@ const MainPage = (props) => {
   const handleViewDetails = (artistId) => {
     if (!artistId) return null;
     dispatch(getArtistInfo(artistId));
+    dispatch(getAlbums(artistId));
+    dispatch(getTopTracks(artistId));
   };
 
   useEffect(() => {
