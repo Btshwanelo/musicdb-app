@@ -10,6 +10,8 @@ const DetailsPage = (props) => {
   let navigate = useNavigate();
 
   const { artistInfo, topTracks, albums } = useSelector((state) => state.artists);
+
+
   return (
     <div className="detail-page">
       <div className="navbar">

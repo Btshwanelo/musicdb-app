@@ -18,7 +18,7 @@ const MainPage = (props) => {
 
   useEffect(() => {
     !isEmpty(artistInfo) && navigate(`detailed/${artistInfo.id}`);
-  }, [artistInfo]);
+  }, [artistInfo, navigate]);
 
   const handleViewDetails = (artistId) => {
     if (!artistId) return null;
@@ -30,7 +30,7 @@ const MainPage = (props) => {
   useEffect(() => {
     dispatch(getArtists(searchValue));
   }, [dispatch, searchValue]);
-  console.log(artists);
+console.log(artists)
   return (
     <div className="main">
       <div className="navbar">
@@ -50,23 +50,23 @@ const MainPage = (props) => {
           </button>
         </div>
       </div>
-      {loading && (
-        <div>
-          <h1>Loading...</h1>
-        </div>
-      )}
-      {error && (
-        <div>
-          <h1>{error}</h1>
-        </div>
-      )}
-      {artists === undefined && (
-        <div>
-          <h1>Search for a song...</h1>
-        </div>
-      )}
+       {loading && (
+          <div>
+            <h1>Loading...</h1>
+          </div>
+        )}
+        {error && (
+          <div>
+            <h1>{error}</h1>
+          </div>
+        )}
+        {artists === undefined && (
+          <div>
+            <h1>Search for a song...</h1>
+          </div>
+        )}
       <div className="cards">
-        {artists &&
+          {artists &&
           artists.map((item) => (
             <div
               className="cards-card"
