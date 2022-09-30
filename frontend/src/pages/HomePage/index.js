@@ -1,29 +1,22 @@
 import axios from 'axios';
+import { isEmpty } from 'lodash';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { getArtists } from '../../reduxSlices/artistSlice';
 import { SearchIcon } from '../../shared/assets/icons';
 import './style.css';
 
 const MainPage = (props) => {
-  const [loading, setLoading] = useState(false);
-  const [posts, setPosts] = useState([]);
-  const [searchTitle, setSearchTitle] = useState('');
+  const dispatch = useDispatch();
+  const [searchValue, setSearchValue] = useState('');
+  const { artists } = useSelector((state) => state.artists);
 
-  useEffect(
-    (searchTitle) => {
-      const loadPosts = async () => {
-        setLoading(true);
-        const response = await axios.get(`/search?q=${searchTitle}`);
-        setPosts(response.data);
-        //console.log("res", response);
-        setLoading(false);
-      };
+  useEffect(() => {
+    dispatch(getArtists(searchValue));
+  }, [dispatch, searchValue]);
 
-      loadPosts();
-    },
-    [searchTitle]
-  );
   return (
     <div className="main">
       <div className="navbar">
@@ -32,8 +25,9 @@ const MainPage = (props) => {
           <input
             type="text"
             placeholder="Search.."
+            value={searchValue}
             name="search"
-            onChange={(e) => setSearchTitle(e.target.value)}
+            onChange={(e) => setSearchValue(e.target.value)}
           />
           <button>
             <SearchIcon />
