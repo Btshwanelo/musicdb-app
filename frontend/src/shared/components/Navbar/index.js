@@ -4,11 +4,12 @@ import { useNavigate } from 'react-router-dom';
 
 import { SearchIcon } from '../../assets/icons';
 
-const Navbar = ({setSearchValue, searchValue}) => {
-  const navigate = useNavigate();
+const Navbar = ({ setSearchValue, searchValue }) => {
+  const navigate = useNavigate('/');
+  const nav = () => navigate('/');
   return (
     <div className="navbar">
-      <div className="navbar-logo" onClick={() => navigate('/')}>
+      <div className="navbar-logo" onClick={nav}>
         LOGO
       </div>
       <div className="navbar-search">

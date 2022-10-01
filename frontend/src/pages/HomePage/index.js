@@ -3,7 +3,13 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { getAlbums, getArtistInfo, getArtists, getTopTracks } from '../../reduxSlices/artistSlice';
+import {
+  getAlbums,
+  getArtistInfo,
+  getArtists,
+  getTopTracks,
+  mountArtist
+} from '../../reduxSlices/artistSlice';
 import { ArtistCard, Navbar } from '../../shared/components';
 import './style.css';
 
@@ -12,14 +18,17 @@ const MainPage = () => {
   const navigate = useNavigate();
 
   const [searchValue, setSearchValue] = useState('');
-  const { artists, artistInfo, loading, error } = useSelector((state) => state.artists);
+  const { artists, artistInfo, loading, error, isArtistInfo } = useSelector(
+    (state) => state.artists
+  );
 
   useEffect(() => {
-    !isEmpty(artistInfo) && navigate(`detailed/${artistInfo.id}`);
+    isArtistInfo && navigate(`detailed/${artistInfo.id}`);
   }, [artistInfo, navigate]);
 
   const handleViewDetails = (artistId) => {
     if (!artistId) return null;
+    dispatch(mountArtist());
     dispatch(getArtistInfo(artistId));
     dispatch(getAlbums(artistId));
     dispatch(getTopTracks(artistId));
@@ -33,18 +42,42 @@ const MainPage = () => {
     <div className="main">
       <Navbar searchValue={searchValue} setSearchValue={setSearchValue} />
       {loading && (
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center'
+            // fontSize: '40px',
+            // color: 'aliceblue',
+            // background: '#e63333',
+            // height: 'fit-content'
+          }}>
           <h1>Loading...</h1>
         </div>
       )}
       {error && (
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            fontSize: '40px',
+            color: 'aliceblue',
+            background: '#103551',
+            height: 'fit-content'
+          }}>
           <h1>{error}</h1>
         </div>
       )}
       {artists === undefined && (
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <h1>Search for a song</h1>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            fontSize: '40px',
+            color: 'aliceblue',
+            background: '#103551',
+            height: 'fit-content'
+          }}>
+          <h1>Search a song</h1>
         </div>
       )}
       <div className="cards">

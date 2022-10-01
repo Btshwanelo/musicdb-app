@@ -1,12 +1,20 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { unmountArtist } from '../../reduxSlices/artistSlice';
 import { AlbumCard, ArtistInfo, Navbar, TopTrack } from '../../shared/components';
 import { durationToRatio } from '../../shared/utils/index';
 import './style.css';
 
 const DetailsPage = () => {
+  const dispatch = useDispatch();
   const { artistInfo, topTracks, albums } = useSelector((state) => state.artists);
+  useEffect(() => {
+    return () => {
+      dispatch(unmountArtist());
+    };
+  }, []);
+  console.log(artistInfo)
 
   return (
     <div className="detail-page">

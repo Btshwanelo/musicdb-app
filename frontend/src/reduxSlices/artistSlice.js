@@ -9,6 +9,7 @@ const initialState = {
   loading: false,
   albums: [],
   topTracks: [],
+  isArtistInfo: false
 
 };
 
@@ -21,7 +22,7 @@ export const getArtists = createAsyncThunk('artist/getArtists', async (query, th
     return thunkAPI.rejectWithValue('something went wrong');
   }
 });
-
+//
 export const getArtistInfo = createAsyncThunk('artist/getArtistInfo', async (artistId, thunkAPI) => {
   try {
     const resp = await axios(`/artist/${artistId}`);
@@ -55,6 +56,13 @@ const artistSlice = createSlice({
   reducers: {
     clearCart: (state) => {
       state.cartItems = [];
+    },
+    unmountArtist: (state) => {
+      state.isArtistInfo = false
+    }
+    ,
+    mountArtist: (state) => {
+      state.isArtistInfo = true
     }
   },
   extraReducers: {
@@ -107,6 +115,6 @@ const artistSlice = createSlice({
   }
 });
 
-export const { clearCart } = artistSlice.actions;
+export const { unmountArtist, mountArtist } = artistSlice.actions;
 
 export default artistSlice.reducer;
