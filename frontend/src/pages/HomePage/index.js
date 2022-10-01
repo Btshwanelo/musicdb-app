@@ -1,15 +1,11 @@
-import { isEmpty } from 'lodash';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import {
-  getAlbums,
-  getArtistInfo,
-  getArtists,
-  getTopTracks,
-  mountArtist
-} from '../../reduxSlices/artistSlice';
+import { getAlbums } from '../../reduxSlices/albumsSlice';
+import { getArtistInfo } from '../../reduxSlices/artistInfoSlice';
+import { getArtists, mountArtist } from '../../reduxSlices/artistsSlice';
+import { getTopTracks } from '../../reduxSlices/topTracksSlice';
 import { ArtistCard, Navbar } from '../../shared/components';
 import './style.css';
 
@@ -18,13 +14,13 @@ const MainPage = () => {
   const navigate = useNavigate();
 
   const [searchValue, setSearchValue] = useState('');
-  const { artists, artistInfo, loading, error, isArtistInfo } = useSelector(
-    (state) => state.artists
-  );
+
+  const { artistInfo } = useSelector((state) => state.artistInfo);
+  const { artists, loading, error, isArtistInfo } = useSelector((state) => state.artists);
 
   useEffect(() => {
     isArtistInfo && navigate(`detailed/${artistInfo.id}`);
-  }, [artistInfo, navigate]);
+  }, [isArtistInfo, artistInfo.id, navigate]);
 
   const handleViewDetails = (artistId) => {
     if (!artistId) return null;
@@ -32,6 +28,7 @@ const MainPage = () => {
     dispatch(getArtistInfo(artistId));
     dispatch(getAlbums(artistId));
     dispatch(getTopTracks(artistId));
+    navigate(`detailed/${artistId}`)
   };
 
   useEffect(() => {

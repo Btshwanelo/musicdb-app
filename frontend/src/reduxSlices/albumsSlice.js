@@ -16,7 +16,7 @@ export const getAlbums = createAsyncThunk('artist/getAlbums', async (artistId, t
   }
 });
 
-const albumsSlice = createSlice({
+const albumsReducer = createSlice({
   name: 'albums',
   initialState,
   reducers: {
@@ -43,6 +43,6 @@ const albumsSlice = createSlice({
   }
 });
 
-export const { clearAlbums } = albumsSlice.actions;
+export const { clearAlbums } = albumsReducer.actions;
 
-export default albumsSlice.reducer;
+export default albumsReducer.reducer;

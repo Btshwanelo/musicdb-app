@@ -1,20 +1,23 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { unmountArtist } from '../../reduxSlices/artistSlice';
+import { unmountArtist } from '../../reduxSlices/artistsSlice';
 import { AlbumCard, ArtistInfo, Navbar, TopTrack } from '../../shared/components';
-import { durationToRatio } from '../../shared/utils/index';
+import { durationToRatio, fansNumToString } from '../../shared/utils/index';
 import './style.css';
 
 const DetailsPage = () => {
   const dispatch = useDispatch();
-  const { artistInfo, topTracks, albums } = useSelector((state) => state.artists);
+
+  const { albumsError, albumsLoading, albums } = useSelector((state) => state.albums);
+  const { tracksError, tracksLoading, topTracks } = useSelector((state) => state.topTracks);
+  const { artistError, artistLoading, artistInfo } = useSelector((state) => state.artistInfo);
+
   useEffect(() => {
     return () => {
       dispatch(unmountArtist());
     };
-  }, []);
-  console.log(artistInfo)
+  }, [dispatch]);
 
   return (
     <div className="detail-page">
@@ -23,7 +26,7 @@ const DetailsPage = () => {
         <div className="artist-section">
           <ArtistInfo
             artistName={artistInfo.name}
-            totalFans={artistInfo.nb_fan}
+            totalFans={fansNumToString(artistInfo.nb_fan)}
             coverPicture={artistInfo.picture_xl}
           />
           <div className="top-tracks">
