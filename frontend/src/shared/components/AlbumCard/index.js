@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import {getYear} from '../../utils/index'
+
+import { getYear } from '../../utils/index';
 
 const AlbumCard = ({ albumCover, albumTiltle, albumRealeseDate }) => {
   return (

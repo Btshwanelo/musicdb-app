@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import {durationToRatio} from '../../utils/index'
+
+import { durationToRatio } from '../../utils/index';
+
 const ArtistCard = ({
   albumtitle,
   albumCover,

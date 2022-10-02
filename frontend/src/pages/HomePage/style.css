@@ -46,7 +46,7 @@
   margin-left: 5px;
   padding: 10px;
   background-color: inherit;
-  min-width: 400px;
+  min-width: 250px;
 }
 .navbar-search input:focus {
   outline: none;

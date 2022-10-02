@@ -21,14 +21,7 @@ export const getArtists = createAsyncThunk('artist/getArtists', async (query, th
 const artistsReducer = createSlice({
   name: 'artist',
   initialState,
-  reducers: {
-    unmountArtist: (state) => {
-      state.isArtistInfo = false;
-    },
-    mountArtist: (state) => {
-      state.isArtistInfo = true;
-    }
-  },
+  reducers: {},
   extraReducers: {
     [getArtists.pending]: (state) => {
       state.loading = true;
@@ -48,6 +41,6 @@ const artistsReducer = createSlice({
   }
 });
 
-export const { unmountArtist, mountArtist } = artistsReducer.actions;
+export const {} = artistsReducer.actions;
 
 export default artistsReducer.reducer;

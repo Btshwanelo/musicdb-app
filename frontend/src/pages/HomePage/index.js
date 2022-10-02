@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { getAlbums } from '../../reduxSlices/albumsSlice';
-import { getArtistInfo } from '../../reduxSlices/artistInfoSlice';
-import { getArtists, mountArtist } from '../../reduxSlices/artistsSlice';
+import { getArtistInfo, mountArtist } from '../../reduxSlices/artistInfoSlice';
+import { getArtists } from '../../reduxSlices/artistsSlice';
 import { getTopTracks } from '../../reduxSlices/topTracksSlice';
 import { ArtistCard, Navbar } from '../../shared/components';
 import './style.css';
@@ -28,7 +28,7 @@ const MainPage = () => {
     dispatch(getArtistInfo(artistId));
     dispatch(getAlbums(artistId));
     dispatch(getTopTracks(artistId));
-    navigate(`detailed/${artistId}`)
+    navigate(`detailed/${artistId}`);
   };
 
   useEffect(() => {
@@ -47,7 +47,8 @@ const MainPage = () => {
             // color: 'aliceblue',
             // background: '#e63333',
             // height: 'fit-content'
-          }}>
+          }}
+        >
           <h1>Loading...</h1>
         </div>
       )}
@@ -60,7 +61,8 @@ const MainPage = () => {
             color: 'aliceblue',
             background: '#103551',
             height: 'fit-content'
-          }}>
+          }}
+        >
           <h1>{error}</h1>
         </div>
       )}
@@ -73,7 +75,8 @@ const MainPage = () => {
             color: 'aliceblue',
             background: '#103551',
             height: 'fit-content'
-          }}>
+          }}
+        >
           <h1>Search a song</h1>
         </div>
       )}

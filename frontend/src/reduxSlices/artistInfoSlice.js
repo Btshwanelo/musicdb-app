@@ -25,6 +25,12 @@ const artistInfoReducer = createSlice({
   reducers: {
     clearArtist: (state) => {
       state.albums = [];
+    },
+    unmountArtist: (state) => {
+      state.isArtistInfo = false;
+    },
+    mountArtist: (state) => {
+      state.isArtistInfo = true;
     }
   },
   extraReducers: {
@@ -46,6 +52,6 @@ const artistInfoReducer = createSlice({
   }
 });
 
-export const { clearAlbums } = artistInfoReducer.actions;
+export const { clearAlbums, unmountArtist, mountArtist } = artistInfoReducer.actions;
 
 export default artistInfoReducer.reducer;
