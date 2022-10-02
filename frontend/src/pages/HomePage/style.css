@@ -15,7 +15,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 0 10%;
+  padding: 0;
   background-color: #f3f3f5;
 }
 .navbar-logo {
@@ -40,6 +40,19 @@
   background-color: inherit;
   vertical-align: middle;
 }
+.navbar-search--active {
+  display: flex;
+}
+.navbar-search--active input {
+  border: 1px solid #e63333;
+  margin-left: 5px;
+  padding: 10px;
+  background-color: inherit;
+  min-width: 210px;
+}
+.navbar-search--active button {
+  border: none;
+}
 .navbar-search input {
   border: none;
   display: none;
@@ -51,6 +64,14 @@
 .navbar-search input:focus {
   outline: none;
   border: 1px solid #e63333;
+}
+
+.info {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  color: aliceblue;
+  background: #103551;
 }
 
 .cards {
@@ -105,6 +126,10 @@
   }
   .navbar-search input {
     display: block;
+  }
+  .navbar-search--active {
+    display: flex;
+    flex-flow: row-reverse;
   }
   .cards {
     grid-template-columns: repeat(2, 1fr);

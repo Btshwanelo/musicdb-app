@@ -70,9 +70,10 @@
 }
 .artist-section .artist-info div {
   padding: 30px 20px;
+  background: #fff;
 }
 .artist-section .artist-info div h4 {
-  color: #fff;
+  color: #000;
   font-size: 53px;
   margin: 10px 0;
 }
@@ -83,11 +84,11 @@
   width: fit-content;
   padding: 0 0 15px 0;
   margin: 0;
-  font-weight: 500;
-  color: #fff;
+  font-weight: 700;
+  color: #e63333;
 }
 .artist-section .artist-info div p {
-  color: #fff;
+  color: #000;
   font-weight: 500;
 }
 .artist-section .artist-info img {
@@ -103,6 +104,7 @@
   margin: 10px 0;
   padding-left: 5%;
   font-size: x-large;
+  color: #e63333;
 }
 .artist-section .top-tracks ul {
   list-style: none;
@@ -114,6 +116,7 @@
   border-bottom: 1px solid #16161b;
   font-size: small;
   display: flex;
+  font-weight: 700;
 }
 .artist-section .top-tracks ul li p {
   margin: 0;
@@ -129,6 +132,7 @@
 }
 .albums-section h2 {
   margin: 0 0 30px 0;
+  color: #e63333;
 }
 .albums-section .album-cards {
   display: grid;
@@ -168,14 +172,18 @@
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 1400px) {
-  .main-section {
-    width: 1400px;
-    justify-self: center;
+@media only screen and (min-width: 500px) {
+  .albums-section .album-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media only screen and (min-width: 730px) {
+  .albums-section .album-cards {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 /* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 1000px) {
   .main-section {
     display: grid;
     grid-template-columns: 1fr;
@@ -205,8 +213,15 @@
   }
   .artist-section .artist-info div {
     position: absolute;
-    padding: 5% 0 0 10%;
+    padding: 2% 0 0 10%;
     width: 400px;
+    background: transparent;
+  }
+  .artist-section .artist-info div h4 {
+    color: #fff;
+  }
+  .artist-section .artist-info div p {
+    color: #fff;
   }
   .artist-section .artist-info div .fans-count {
     border-bottom: 1px solid;
@@ -215,6 +230,7 @@
     width: fit-content;
     padding: 0 0 15px 0;
     margin: 0;
+    color: #e63333;
   }
   .artist-section .artist-info img {
     width: 100%;
@@ -222,7 +238,7 @@
   }
   .artist-section .top-tracks {
     grid-area: top-tracks;
-    padding: 40px;
+    padding: 20px;
   }
   .artist-section .top-tracks h4 {
     margin: 10px 0;
@@ -237,7 +253,7 @@
   .artist-section .top-tracks ul li {
     padding: 15px 5px 10px 5px;
     border-bottom: 1px solid #333336;
-    font-weight: 600;
+    font-weight: 700;
     font-size: small;
     display: flex;
   }
@@ -253,5 +269,12 @@
   }
   .albums-section .album-cards {
     grid-template-columns: repeat(4, 1fr);
+  }
+}
+/* Large devices (portrait tablets and large phones, 1400px and up) */
+@media only screen and (min-width: 1400px) {
+  .main-section {
+    width: 1400px;
+    justify-self: center;
   }
 }/*# sourceMappingURL=style.css.map */

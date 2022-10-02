@@ -17,7 +17,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 0 10%;
+  padding: 0;
   background-color: #f3f3f5;
 
   &-logo {
@@ -43,6 +43,21 @@
       background-color: inherit;
       vertical-align: middle;
     }
+    &--active {
+      display: flex;
+
+      & input {
+        border: 1px solid #e63333;
+        margin-left: 5px;
+        padding: 10px;
+        background-color: inherit;
+        min-width: 210px;
+      }
+
+      & button {
+        border: none;
+      }
+    }
 
     & input {
       border: none;
@@ -58,6 +73,14 @@
       border: 1px solid #e63333;
     }
   }
+}
+
+.info {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  color: aliceblue;
+  background: #103551;
 }
 
 .cards {
@@ -122,6 +145,11 @@
       flex-flow: row-reverse;
       & input {
         display: block;
+      }
+
+      &--active {
+        display: flex;
+        flex-flow: row-reverse;
       }
     }
   }

@@ -14,6 +14,7 @@ const MainPage = () => {
   const navigate = useNavigate();
 
   const [searchValue, setSearchValue] = useState('');
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const { artistInfo } = useSelector((state) => state.artistInfo);
   const { artists, loading, error, isArtistInfo } = useSelector((state) => state.artists);
@@ -37,46 +38,30 @@ const MainPage = () => {
 
   return (
     <div className="main">
-      <Navbar searchValue={searchValue} setSearchValue={setSearchValue} />
+      <Navbar
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+        isSearchOpen={isSearchOpen}
+        setIsSearchOpen={setIsSearchOpen}
+      />
       {loading && (
         <div
           style={{
             display: 'flex',
             justifyContent: 'center'
-            // fontSize: '40px',
-            // color: 'aliceblue',
-            // background: '#e63333',
-            // height: 'fit-content'
-          }}
-        >
+          }}>
           <h1>Loading...</h1>
         </div>
       )}
       {error && (
         <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            fontSize: '40px',
-            color: 'aliceblue',
-            background: '#103551',
-            height: 'fit-content'
-          }}
-        >
+        className='info'>
           <h1>{error}</h1>
         </div>
       )}
       {artists === undefined && (
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            fontSize: '40px',
-            color: 'aliceblue',
-            background: '#103551',
-            height: 'fit-content'
-          }}
-        >
+        <div className='info'
+          >
           <h1>Search a song</h1>
         </div>
       )}
