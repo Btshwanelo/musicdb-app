@@ -26,37 +26,44 @@ const DetailsPage = () => {
     };
   }, [dispatch]);
 
-  
-
   return (
     <div className="detail-page">
       <Navbar />
       <div className="main-section">
         <div className="artist-section">
-          {artistLoading ?  <Loader /> : <ArtistInfo
-            artistName={artistInfo.name}
-            totalFans={fansNumToString(artistInfo.nb_fan)}
-            coverPicture={artistInfo.picture_xl}
-          />}
+          {artistLoading ? (
+            <Loader />
+          ) : (
+            <ArtistInfo
+              artistName={artistInfo.name}
+              totalFans={fansNumToString(artistInfo.nb_fan)}
+              coverPicture={artistInfo.picture_xl}
+            />
+          )}
           <div className="top-tracks">
             <h4>Top tracks</h4>
             <ul>
-              {tracksLoading ? <Loader /> :
+              {tracksLoading ? (
+                <Loader />
+              ) : (
                 topTracks.map((item, index) => (
                   <TopTrack
                     key={item.id}
-                    trackDuration={durationToRatio(item.duration) | 1}
+                    trackDuration={durationToRatio(item.duration)}
                     trackTite={item.title}
                     index={index}
                   />
-                ))}
+                ))
+              )}
             </ul>
           </div>
         </div>
         <div className="albums-section">
           <h2>Albums</h2>
           <div className="album-cards">
-            {albumsLoading ? <Loader /> :
+            {albumsLoading ? (
+              <Loader />
+            ) : (
               albums.map((item) => (
                 <AlbumCard
                   key={item.id}
@@ -64,7 +71,8 @@ const DetailsPage = () => {
                   albumTiltle={item.title}
                   albumRealeseDate={item.release_date}
                 />
-              ))}
+              ))
+            )}
           </div>
         </div>
       </div>
