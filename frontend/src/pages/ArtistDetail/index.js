@@ -1,77 +1,83 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { SearchIcon } from '../../shared/assets/icons';
+import { unmountArtist } from '../../reduxSlices/artistInfoSlice';
+import { AlbumCard, ArtistInfo, Loader, Navbar, TopTrack } from '../../shared/components';
+import { durationToRatio, fansNumToString } from '../../shared/utils/index';
 import './style.css';
 
-const DetailsPage = (props) => {
-  let navigate = useNavigate();
+const DetailsPage = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const { artistInfo, topTracks, albums } = useSelector((state) => state.artists);
+  const { albumsError, albumsLoading, albums } = useSelector((state) => state.albums);
+  const { tracksError, tracksLoading, topTracks } = useSelector((state) => state.topTracks);
+  const { artistError, artistLoading, artistInfo, isArtistInfo } = useSelector(
+    (state) => state.artistInfo
+  );
 
+  useEffect(() => {
+    {
+      !isArtistInfo && navigate('/');
+    }
+    return () => {
+      dispatch(unmountArtist());
+    };
+  }, [dispatch]);
 
   return (
     <div className="detail-page">
-      <div className="navbar">
-        <button className="navbar-logo" onClick={() => navigate('/')}>
-          LOGO
-        </button>
-        <div className="navbar-search">
-          <button>
-            <SearchIcon />
-          </button>
-          <input type="text" placeholder="Search.." name="search" />
-        </div>
-      </div>
+      <Navbar />
       <div className="main-section">
         <div className="artist-section">
-          <div className="artist-info">
-            <img src={artistInfo.picture_xl} alt="Avatar" />
-            <div>
-              <h4>{artistInfo.name}</h4>
-              <p className="fans-count">{artistInfo.nb_fan}</p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua.
-              </p>
-            </div>
-          </div>
+          {artistLoading ? (
+            <Loader />
+          ) : (
+            <ArtistInfo
+              artistName={artistInfo.name}
+              totalFans={fansNumToString(artistInfo.nb_fan)}
+              coverPicture={artistInfo.picture_xl}
+            />
+          )}
           <div className="top-tracks">
             <h4>Top tracks</h4>
             <ul>
-              {topTracks &&
+              {tracksLoading ? (
+                <Loader />
+              ) : (
                 topTracks.map((item, index) => (
-                  <li key={item.id}>
-                    <p>
-                      {index + 1}. {item.title}{' '}
-                    </p>
-                    <span>{item.duration}</span>
-                  </li>
-                ))}
+                  <TopTrack
+                    key={item.id}
+                    trackDuration={durationToRatio(item.duration)}
+                    trackTite={item.title}
+                    index={index}
+                  />
+                ))
+              )}
             </ul>
           </div>
         </div>
         <div className="albums-section">
           <h2>Albums</h2>
           <div className="album-cards">
-            {albums &&
+            {albumsLoading ? (
+              <Loader />
+            ) : (
               albums.map((item) => (
-                <div className="cards-card" key={item.id}>
-                  <img src={item.cover} alt="Avatar" />
-                  <div className="cards-container">
-                    <h4>{item.title}</h4>
-                    <p>{item.release_date}</p>
-                  </div>
-                </div>
-              ))}
+                <AlbumCard
+                  key={item.id}
+                  albumCover={item.cover}
+                  albumTiltle={item.title}
+                  albumRealeseDate={item.release_date}
+                />
+              ))
+            )}
           </div>
         </div>
       </div>
     </div>
   );
 };
-
-DetailsPage.propTypes = {};
 
 export default DetailsPage;

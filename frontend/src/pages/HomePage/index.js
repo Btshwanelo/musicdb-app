@@ -1,91 +1,87 @@
-import { isEmpty } from 'lodash';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { getAlbums, getArtistInfo, getArtists, getTopTracks } from '../../reduxSlices/artistSlice';
-import { SearchIcon } from '../../shared/assets/icons';
+import { getAlbums } from '../../reduxSlices/albumsSlice';
+import { getArtistInfo, mountArtist } from '../../reduxSlices/artistInfoSlice';
+import { getArtists } from '../../reduxSlices/artistsSlice';
+import { getTopTracks } from '../../reduxSlices/topTracksSlice';
+import { ArtistCard, Navbar } from '../../shared/components';
 import './style.css';
 
-const MainPage = (props) => {
+const MainPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [searchValue, setSearchValue] = useState('');
-  const { artists, artistInfo, loading, error } = useSelector((state) => state.artists);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  const { artistInfo } = useSelector((state) => state.artistInfo);
+  const { artists, loading, error, isArtistInfo } = useSelector((state) => state.artists);
 
   useEffect(() => {
-    !isEmpty(artistInfo) && navigate(`detailed/${artistInfo.id}`);
-  }, [artistInfo, navigate]);
+    isArtistInfo && navigate(`detailed/${artistInfo.id}`);
+  }, [isArtistInfo, artistInfo.id, navigate]);
 
   const handleViewDetails = (artistId) => {
     if (!artistId) return null;
+    dispatch(mountArtist());
     dispatch(getArtistInfo(artistId));
     dispatch(getAlbums(artistId));
     dispatch(getTopTracks(artistId));
+    navigate(`detailed/${artistId}`);
   };
 
   useEffect(() => {
     dispatch(getArtists(searchValue));
   }, [dispatch, searchValue]);
-console.log(artists)
+
   return (
     <div className="main">
-      <div className="navbar">
-        <div className="navbar-logo" onClick={() => navigate('/')}>
-          LOGO
+      <Navbar
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+        isSearchOpen={isSearchOpen}
+        setIsSearchOpen={setIsSearchOpen}
+      />
+      {loading && (
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center'
+          }}>
+          <h1>Loading...</h1>
         </div>
-        <div className="navbar-search">
-          <input
-            type="text"
-            placeholder="Search.."
-            value={searchValue}
-            name="search"
-            onChange={(e) => setSearchValue(e.target.value)}
-          />
-          <button>
-            <SearchIcon />
-          </button>
+      )}
+      {error && (
+        <div
+        className='info'>
+          <h1>{error}</h1>
         </div>
-      </div>
-       {loading && (
-          <div>
-            <h1>Loading...</h1>
-          </div>
-        )}
-        {error && (
-          <div>
-            <h1>{error}</h1>
-          </div>
-        )}
-        {artists === undefined && (
-          <div>
-            <h1>Search for a song...</h1>
-          </div>
-        )}
+      )}
+      {artists === undefined && (
+        <div className='info'
+          >
+          <h1>Search a song</h1>
+        </div>
+      )}
       <div className="cards">
-          {artists &&
+        {artists &&
           artists.map((item) => (
-            <div
-              className="cards-card"
+            <ArtistCard
               key={item.id}
-              onClick={() => handleViewDetails(item.artist.id)}>
-              <img src={item.album.cover} alt="Avatar" />
-              <div className="cards-container">
-                <div>
-                  <h4>{item.title_short}</h4>
-                  <p>{item.duration}</p>
-                </div>
-                <p>By {item.artist.name}</p>
-                <h4>{item.album.title}</h4>
-              </div>
-            </div>
+              albumtitle={item.album.title}
+              albumCover={item.album.cover}
+              artistId={item.artist.id}
+              artistName={item.artist.name}
+              trackTitle={item.title_short}
+              trackDuration={item.duration}
+              handleViewDetails={handleViewDetails}
+            />
           ))}
       </div>
     </div>
   );
 };
-
-MainPage.propTypes = {};
 
 export default MainPage;

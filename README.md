@@ -1,6 +1,6 @@
-# Deezerclone
+# MusicApp
 
-The repository has two application, **deezerapi** and **deezerapp**.
+The repository has two application, **backend** and **frontend**.
 
 - **backend** - is RESTful API application built with Nodejs and Express. The application is connecting to Deezer APIs https://api.deezer.com/
 - **frontend** - is forntend application buit with ReactJs. The application is consuming data from **deezerapi** through RESTful API
