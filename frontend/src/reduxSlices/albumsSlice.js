@@ -7,6 +7,11 @@ const initialState = {
   albums: []
 };
 
+/**
+ * Get Year
+ * @param {String} date
+ * @returns {String}
+ */
 export const getAlbums = createAsyncThunk('artist/getAlbums', async (artistId, thunkAPI) => {
   try {
     const resp = await axios(`/artist/${artistId}/albums`);
