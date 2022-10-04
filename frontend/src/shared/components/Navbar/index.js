@@ -28,6 +28,11 @@ const Navbar = ({ setSearchValue, searchValue, isSearchOpen, setIsSearchOpen }) 
   );
 };
 
-Navbar.propTypes = {};
+Navbar.propTypes = {
+  setSearchValue: PropTypes.string.isRequired,
+  searchValue: PropTypes.string.isRequired,
+  isSearchOpen: PropTypes.string.isRequired,
+  setIsSearchOpen: PropTypes.string.isRequired
+};
 
 export default Navbar;

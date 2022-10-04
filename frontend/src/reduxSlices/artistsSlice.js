@@ -10,6 +10,11 @@ const initialState = {
   isArtistInfo: false
 };
 
+/**
+ * Get Year
+ * @param {String} date
+ * @returns {String}
+ */
 export const getArtists = createAsyncThunk('artist/getArtists', async (query, thunkAPI) => {
   try {
     const resp = await axios(`/search?q=${query}`);
@@ -20,6 +25,11 @@ export const getArtists = createAsyncThunk('artist/getArtists', async (query, th
   }
 });
 
+/**
+ * Get Year
+ * @param {String} date
+ * @returns {String}
+ */
 export const getNext = createAsyncThunk('artist/getNext', async (url, thunkAPI) => {
   const query = url.slice(22);
   console.log('query', query);
@@ -32,6 +42,11 @@ export const getNext = createAsyncThunk('artist/getNext', async (url, thunkAPI) 
   }
 });
 
+/**
+ * Get Year
+ * @param {String} date
+ * @returns {String}
+ */
 export const getPrev = createAsyncThunk('artist/getPrev', async (url, thunkAPI) => {
   const query = url.slice(22);
 

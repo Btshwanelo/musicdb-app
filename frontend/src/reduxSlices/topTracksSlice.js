@@ -7,6 +7,11 @@ const initialState = {
   topTracks: []
 };
 
+/**
+ * Get Year
+ * @param {String} date
+ * @returns {String}
+ */
 export const getTopTracks = createAsyncThunk('artist/getTopTracks', async (artistId, thunkAPI) => {
   try {
     const resp = await axios(`/artist/${artistId}/top`);

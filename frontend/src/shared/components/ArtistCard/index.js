@@ -27,6 +27,14 @@ const ArtistCard = ({
   );
 };
 
-ArtistCard.propTypes = {};
+ArtistCard.propTypes = {
+  albumtitle: PropTypes.string.isRequired,
+  albumCover: PropTypes.string.isRequired,
+  artistId: PropTypes.string.isRequired,
+  artistName: PropTypes.string.isRequired,
+  trackTitle: PropTypes.string.isRequired,
+  trackDuration: PropTypes.string.isRequired,
+  handleViewDetails: PropTypes.string.isRequired
+};
 
 export default ArtistCard;

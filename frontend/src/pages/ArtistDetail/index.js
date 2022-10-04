@@ -11,11 +11,9 @@ const DetailsPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { albumsError, albumsLoading, albums } = useSelector((state) => state.albums);
-  const { tracksError, tracksLoading, topTracks } = useSelector((state) => state.topTracks);
-  const { artistError, artistLoading, artistInfo, isArtistInfo } = useSelector(
-    (state) => state.artistInfo
-  );
+  const { albumsLoading, albums } = useSelector((state) => state.albums);
+  const { tracksLoading, topTracks } = useSelector((state) => state.topTracks);
+  const { artistLoading, artistInfo, isArtistInfo } = useSelector((state) => state.artistInfo);
 
   useEffect(() => {
     {

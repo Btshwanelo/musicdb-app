@@ -1,13 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import './style.css'
+import React from 'react';
 
-const Loader = props => {
-  return (
-    <span class="loader"></span>
-  )
-}
+import './style.css';
 
-Loader.propTypes = {}
+const Loader = () => {
+  return <span class="loader"></span>;
+};
 
-export default Loader
+export default Loader;

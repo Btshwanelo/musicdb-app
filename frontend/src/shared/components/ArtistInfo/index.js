@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { fansNumToString } from '../../utils/index';
-
 const ArtistInfo = ({ artistName, totalFans, coverPicture }) => {
   return (
     <div className="artist-info">
@@ -19,6 +17,10 @@ const ArtistInfo = ({ artistName, totalFans, coverPicture }) => {
   );
 };
 
-ArtistInfo.propTypes = {};
+ArtistInfo.propTypes = {
+  artistName: PropTypes.string.isRequired,
+  totalFans: PropTypes.string.isRequired,
+  coverPicture: PropTypes.string.isRequired
+};
 
 export default ArtistInfo;

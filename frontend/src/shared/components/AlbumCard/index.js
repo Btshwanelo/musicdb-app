@@ -15,6 +15,10 @@ const AlbumCard = ({ albumCover, albumTiltle, albumRealeseDate }) => {
   );
 };
 
-AlbumCard.propTypes = {};
+AlbumCard.propTypes = {
+  albumCover: PropTypes.string.isRequired,
+  albumTiltle: PropTypes.string.isRequired,
+  albumRealeseDate: PropTypes.string.isRequired
+};
 
 export default AlbumCard;

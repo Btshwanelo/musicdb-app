@@ -7,6 +7,11 @@ const initialState = {
   artistInfo: []
 };
 
+/**
+ * Get Year
+ * @param {String} date
+ * @returns {String}
+ */
 export const getArtistInfo = createAsyncThunk(
   'artist/getArtistInfo',
   async (artistId, thunkAPI) => {
