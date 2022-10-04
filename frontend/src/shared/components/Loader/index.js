@@ -4,7 +4,7 @@ import './style.css'
 
 const Loader = props => {
   return (
-    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+    <span class="loader"></span>
   )
 }
 

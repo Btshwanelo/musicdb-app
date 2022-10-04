@@ -6,7 +6,7 @@ import { getAlbums } from '../../reduxSlices/albumsSlice';
 import { getArtistInfo, mountArtist } from '../../reduxSlices/artistInfoSlice';
 import { getArtists, getNext, getPrev } from '../../reduxSlices/artistsSlice';
 import { getTopTracks } from '../../reduxSlices/topTracksSlice';
-import { ArtistCard, Navbar } from '../../shared/components';
+import { ArtistCard, Loader, Navbar } from '../../shared/components';
 import './style.css';
 
 const MainPage = () => {
@@ -52,7 +52,7 @@ const MainPage = () => {
             display: 'flex',
             justifyContent: 'center'
           }}>
-          <h1>Loading...</h1>
+          <Loader />
         </div>
       )}
       {error && (
