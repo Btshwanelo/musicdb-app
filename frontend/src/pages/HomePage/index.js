@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { getAlbums } from '../../reduxSlices/albumsSlice';
 import { getArtistInfo, mountArtist } from '../../reduxSlices/artistInfoSlice';
-import { getArtists } from '../../reduxSlices/artistsSlice';
+import { getArtists, getNext, getPrev } from '../../reduxSlices/artistsSlice';
 import { getTopTracks } from '../../reduxSlices/topTracksSlice';
 import { ArtistCard, Navbar } from '../../shared/components';
 import './style.css';
@@ -17,7 +17,9 @@ const MainPage = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const { artistInfo } = useSelector((state) => state.artistInfo);
-  const { artists, loading, error, isArtistInfo } = useSelector((state) => state.artists);
+  const { artists, loading, error, isArtistInfo, nextPage, prevPage } = useSelector(
+    (state) => state.artists
+  );
 
   useEffect(() => {
     isArtistInfo && navigate(`detailed/${artistInfo.id}`);
@@ -54,14 +56,12 @@ const MainPage = () => {
         </div>
       )}
       {error && (
-        <div
-        className='info'>
+        <div className="info">
           <h1>{error}</h1>
         </div>
       )}
       {artists === undefined && (
-        <div className='info'
-          >
+        <div className="info">
           <h1>Search a song</h1>
         </div>
       )}
@@ -79,6 +79,20 @@ const MainPage = () => {
               handleViewDetails={handleViewDetails}
             />
           ))}
+      </div>
+      <div className="pagination">
+        <button
+          className={
+            prevPage === null ? 'button--inactive previous ' : 'previous pagination-button'
+          }
+          onClick={() => dispatch(getPrev(prevPage))}>
+          &laquo; Previous
+        </button>
+        <button
+          className={nextPage === null ? 'button--inactive next ' : 'next pagination-button'}
+          onClick={() => dispatch(getNext(nextPage))}>
+          Next &raquo;
+        </button>
       </div>
     </div>
   );

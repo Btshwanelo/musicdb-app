@@ -18,5 +18,5 @@ app.use("/", require("./routes"));
 
 server.listen(port);
 
-console.log("server is running on PORT:", port);
+console.log("server is running on PORT:", `its alive on http://localhost:${port}`);
 console.log("server is running...");

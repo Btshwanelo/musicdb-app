@@ -112,6 +112,40 @@
   margin: 5px 0;
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  padding: 0 0 23px 0;
+}
+.pagination-button {
+  text-decoration: none;
+  display: inline-block;
+  border: none;
+  padding: 8px 16px;
+  margin: 0 10px;
+}
+.pagination button:hover {
+  background-color: #ddd;
+  color: black;
+}
+.pagination .previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+.pagination .next {
+  background-color: #e63333;
+  color: white;
+}
+
+.button--inactive {
+  text-decoration: none;
+  display: none;
+  border: none;
+  padding: 8px 16px;
+  margin: 0 10px;
+}
+
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
   .navbar {
