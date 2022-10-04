@@ -3,8 +3,8 @@ import axios from 'axios';
 
 const initialState = {
   artists: [],
-  prevPage: '',
-  nextPage: '',
+  prevPage: null,
+  nextPage: null,
   error: null,
   loading: false,
   isArtistInfo: false
@@ -128,7 +128,5 @@ const artistsReducer = createSlice({
     }
   }
 });
-
-export const {} = artistsReducer.actions;
 
 export default artistsReducer.reducer;

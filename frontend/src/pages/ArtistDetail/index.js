@@ -2,8 +2,10 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
+import { getAlbumsNext, getAlbumsPrev } from '../../reduxSlices/albumsSlice';
 import { unmountArtist } from '../../reduxSlices/artistInfoSlice';
 import { AlbumCard, ArtistInfo, Loader, Navbar, TopTrack } from '../../shared/components';
+import Pagination from '../../shared/components/Pagination';
 import { durationToRatio, fansNumToString } from '../../shared/utils/index';
 import './style.css';
 
@@ -11,18 +13,16 @@ const DetailsPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { albumsLoading, albums } = useSelector((state) => state.albums);
+  const { albumsLoading, albums, prevPage, nextPage } = useSelector((state) => state.albums);
   const { tracksLoading, topTracks } = useSelector((state) => state.topTracks);
   const { artistLoading, artistInfo, isArtistInfo } = useSelector((state) => state.artistInfo);
 
   useEffect(() => {
-    {
-      !isArtistInfo && navigate('/');
-    }
+    !isArtistInfo && navigate('/');
     return () => {
       dispatch(unmountArtist());
     };
-  }, [dispatch]);
+  }, [dispatch, isArtistInfo, navigate]);
 
   return (
     <div className="detail-page">
@@ -73,6 +73,12 @@ const DetailsPage = () => {
             )}
           </div>
         </div>
+        <Pagination
+          getNext={getAlbumsNext}
+          getPrev={getAlbumsPrev}
+          prevPage={prevPage}
+          nextPage={nextPage}
+        />
       </div>
     </div>
   );

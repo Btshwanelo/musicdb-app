@@ -7,7 +7,7 @@
   grid-auto-flow: row;
   justify-content: stretch;
   justify-items: stretch;
-  grid-template-areas: "navbar" "cards";
+  grid-template-areas: 'navbar' 'cards';
 }
 
 .detail-page .navbar {
@@ -26,6 +26,7 @@
   color: #e2e2e2;
   align-content: center;
   border-radius: 4px;
+  cursor: pointer;
 }
 .detail-page .navbar-search:focus {
   border: 1px solid #e63333;
@@ -125,6 +126,32 @@
   flex-grow: 1;
   text-align: right;
 }
+.artist-section .pagination {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  padding: 0 0 23px 0;
+}
+.artist-section .pagination-button {
+  text-decoration: none;
+  display: inline-block;
+  border: none;
+  padding: 8px 16px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+.artist-section .pagination button:hover {
+  background-color: #ddd;
+  color: black;
+}
+.artist-section .pagination .previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+.artist-section .pagination .next {
+  background-color: #e63333;
+  color: white;
+}
 
 .albums-section {
   grid-area: albums-section;
@@ -193,7 +220,7 @@
     row-gap: 50px;
     justify-content: stretch;
     justify-items: stretch;
-    grid-template-areas: "artist-section " "albums-section";
+    grid-template-areas: 'artist-section ' 'albums-section';
   }
   .artist-section {
     grid-area: artist-section;
@@ -204,7 +231,7 @@
     grid-auto-flow: row;
     justify-content: stretch;
     justify-items: stretch;
-    grid-template-areas: "artist-info top-tracks";
+    grid-template-areas: 'artist-info top-tracks';
     height: 350px;
   }
   .artist-section .artist-info {
@@ -277,4 +304,4 @@
     width: 1400px;
     justify-self: center;
   }
-}/*# sourceMappingURL=style.css.map */
+} /*# sourceMappingURL=style.css.map */

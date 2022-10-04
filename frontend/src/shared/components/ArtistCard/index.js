@@ -30,11 +30,11 @@ const ArtistCard = ({
 ArtistCard.propTypes = {
   albumtitle: PropTypes.string.isRequired,
   albumCover: PropTypes.string.isRequired,
-  artistId: PropTypes.string.isRequired,
+  artistId: PropTypes.number.isRequired,
   artistName: PropTypes.string.isRequired,
   trackTitle: PropTypes.string.isRequired,
-  trackDuration: PropTypes.string.isRequired,
-  handleViewDetails: PropTypes.string.isRequired
+  trackDuration: PropTypes.number.isRequired,
+  handleViewDetails: PropTypes.func.isRequired
 };
 
 export default ArtistCard;

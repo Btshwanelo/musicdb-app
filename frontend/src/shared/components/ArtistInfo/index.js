@@ -18,9 +18,9 @@ const ArtistInfo = ({ artistName, totalFans, coverPicture }) => {
 };
 
 ArtistInfo.propTypes = {
-  artistName: PropTypes.string.isRequired,
-  totalFans: PropTypes.string.isRequired,
-  coverPicture: PropTypes.string.isRequired
+  artistName: PropTypes.string,
+  totalFans: PropTypes.any,
+  coverPicture: PropTypes.string
 };
 
 export default ArtistInfo;

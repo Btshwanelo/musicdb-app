@@ -14,7 +14,7 @@ const TopTrack = ({ trackDuration, trackTite, index }) => {
 
 TopTrack.propTypes = {
   trackDuration: PropTypes.string.isRequired,
-  trackTite: PropTypes.number.isRequired,
+  trackTite: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired
 };
 

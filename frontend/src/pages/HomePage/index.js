@@ -7,6 +7,7 @@ import { getArtistInfo, mountArtist } from '../../reduxSlices/artistInfoSlice';
 import { getArtists, getNext, getPrev } from '../../reduxSlices/artistsSlice';
 import { getTopTracks } from '../../reduxSlices/topTracksSlice';
 import { ArtistCard, Loader, Navbar } from '../../shared/components';
+import Pagination from '../../shared/components/Pagination';
 import './style.css';
 
 const MainPage = () => {
@@ -51,7 +52,8 @@ const MainPage = () => {
           style={{
             display: 'flex',
             justifyContent: 'center'
-          }}>
+          }}
+        >
           <Loader />
         </div>
       )}
@@ -80,20 +82,7 @@ const MainPage = () => {
             />
           ))}
       </div>
-      <div className="pagination">
-        <button
-          className={
-            prevPage === null ? 'button--inactive previous ' : 'previous pagination-button'
-          }
-          onClick={() => dispatch(getPrev(prevPage))}>
-          &laquo; Previous
-        </button>
-        <button
-          className={nextPage === null ? 'button--inactive next ' : 'next pagination-button'}
-          onClick={() => dispatch(getNext(nextPage))}>
-          Next &raquo;
-        </button>
-      </div>
+      <Pagination getNext={getNext} getPrev={getPrev} prevPage={prevPage} nextPage={nextPage} />
     </div>
   );
 };
