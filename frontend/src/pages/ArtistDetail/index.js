@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { getAlbumsNext, getAlbumsPrev } from '../../reduxSlices/albumsSlice';
+import { getAlbums } from '../../reduxSlices/albumsSlice';
 import { unmountArtist } from '../../reduxSlices/artistInfoSlice';
 import { AlbumCard, ArtistInfo, Loader, Navbar, TopTrack } from '../../shared/components';
 import Pagination from '../../shared/components/Pagination';
-import { durationToRatio, fansNumToString } from '../../shared/utils/index';
+import { durationToRatio, fansNumToString, indexStringToNum } from '../../shared/utils/index';
 import './style.css';
 
 const DetailsPage = () => {
@@ -74,10 +74,10 @@ const DetailsPage = () => {
           </div>
         </div>
         <Pagination
-          getNext={getAlbumsNext}
-          getPrev={getAlbumsPrev}
-          prevPage={prevPage}
-          nextPage={nextPage}
+          getFunc={getAlbums}
+          prevId={indexStringToNum(prevPage)}
+          nextId={indexStringToNum(nextPage)}
+          artistId={artistInfo.id}
         />
       </div>
     </div>

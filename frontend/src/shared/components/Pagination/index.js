@@ -2,20 +2,18 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-const Pagination = ({ getNext, getPrev, prevPage, nextPage }) => {
+const Pagination = ({ getFunc, prevId, nextId, artistId }) => {
   const dispatch = useDispatch();
   return (
     <div className="pagination">
       <button
-        className={prevPage === null ? 'button--inactive previous ' : 'previous pagination-button'}
-        onClick={() => dispatch(getPrev(prevPage))}
-      >
+        className={prevId === null ? 'button--inactive previous ' : 'previous pagination-button'}
+        onClick={() => dispatch(getFunc({ artistId: artistId, indexId: prevId }))}>
         &laquo; Previous
       </button>
       <button
-        className={nextPage === null ? 'button--inactive next ' : 'next pagination-button'}
-        onClick={() => dispatch(getNext(nextPage))}
-      >
+        className={nextId === null ? 'button--inactive next ' : 'next pagination-button'}
+        onClick={() => dispatch(getFunc({ artistId: artistId, indexId: nextId }))}>
         Next &raquo;
       </button>
     </div>
@@ -23,10 +21,10 @@ const Pagination = ({ getNext, getPrev, prevPage, nextPage }) => {
 };
 
 Pagination.propTypes = {
-  getNext: PropTypes.func,
-  getPrev: PropTypes.func,
-  prevPage: PropTypes.string,
-  nextPage: PropTypes.string
+  getAlbums: PropTypes.func,
+  artistId: PropTypes.number,
+  prevPage: PropTypes.number,
+  nextPage: PropTypes.number
 };
 
 export default Pagination;

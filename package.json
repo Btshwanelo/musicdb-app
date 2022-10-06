@@ -1,24 +1,20 @@
 {
-  "name": "musiqapp",
+  "name": "music-app",
   "version": "1.0.0",
-  "description": "Nodejs and Epxress connecting to deezer APIs",
+  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd backend && node server.js",
+    "start": "node server.js",
     "frontend": "cd frontend &&  npm start",
-    "dev": "concurrently -n 'server,client' \"nodemon backend/server.js\" \"npm run frontend\""
+    "dev": "concurrently -n 'server,client' \"nodemon server.js\" \"npm run frontend\""
   },
-  "author": "Tshwanelo",
+  "author": "Tshwanelo Bucibo",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.20.0",
+    "axios": "^0.21.4",
     "concurrently": "^7.4.0",
     "express": "^4.18.1",
-    "http": "^0.0.1-security",
     "nodemon": "^2.0.20"
-  },
-  "devDependencies": {
-    "morgan": "^1.10.0"
   }
 }

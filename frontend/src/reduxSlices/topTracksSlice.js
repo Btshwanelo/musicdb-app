@@ -14,7 +14,7 @@ const initialState = {
  */
 export const getTopTracks = createAsyncThunk('artist/getTopTracks', async (artistId, thunkAPI) => {
   try {
-    const resp = await axios(`/artist/${artistId}/top`);
+    const resp = await axios(`/api/artist/tracks/${artistId}`);
     return resp.data;
   } catch (error) {
     return thunkAPI.rejectWithValue('something went wrong');

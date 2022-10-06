@@ -5,7 +5,7 @@ import { getYear } from '../../utils/index';
 
 const AlbumCard = ({ albumCover, albumTiltle, albumRealeseDate }) => {
   return (
-    <div className="cards-card">
+    <div className="album-cards-card">
       <img src={albumCover} alt="Avatar" />
       <div className="cards-container">
         <h4>{albumTiltle}</h4>
@@ -16,9 +16,9 @@ const AlbumCard = ({ albumCover, albumTiltle, albumRealeseDate }) => {
 };
 
 AlbumCard.propTypes = {
-  albumCover: PropTypes.string.isRequired,
-  albumTiltle: PropTypes.string.isRequired,
-  albumRealeseDate: PropTypes.string.isRequired
+  albumCover: PropTypes.string,
+  albumTiltle: PropTypes.string,
+  albumRealeseDate: PropTypes.string
 };
 
 export default AlbumCard;
