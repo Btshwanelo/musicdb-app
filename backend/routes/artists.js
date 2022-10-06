@@ -1,43 +1,26 @@
-const messages = require("../utils/response");
-const ArtistController = require("../controller/artistController");
+const axios = require("axios");
+const baseUrl = "https://api.deezer.com";
 
 module.exports = {
   /**
-   * Search Artists
+   * Search tracks
    * @return {Array}
    * @description
    * The endpoint returns:
-   * Image,
+   * Track image,
    * Artists name,
-   * Fan count
+   * Track
    */
-  search: async (req, res) => {
-    try {
-      const { qs } = req.query;
-      const response = await ArtistController.getSearch(qs);
-      return res.status(200).json(response);
-    } catch (error) {
-      return res.status(500).json(messages.err500(error.message));
-    }
-  },
-
-  /**
-   * Get Artists Info
-   * @return {Object}
-   * @description
-   * The endpoint returns:
-   * Image artist,
-   * Artist with their fan count,
-   * Artists top 5 most popular tracks,
-   * Artists albums
-   */
-  details: async (req, res) => {
-    try {
-      const { artistId } = req.params;
-      const response = await ArtistController.getDetails(artistId);
-      return res.status(200).json(response);
-    } catch (error) {
-      return res.status(500).json(messages.err500(error.message));
-    }
+  search: (req, res) => {
+    const { query, indexId } = req.body;
+    axios
+      .get(`${baseUrl}/search?q=${query}&index=${indexId}`)
+      .then((response) => {
+        //console.log(response);
+        res.send(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   },
 };

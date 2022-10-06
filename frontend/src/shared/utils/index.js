@@ -44,3 +44,11 @@ export const fansNumToString = (fansNum) => {
     return _fansNum;
   }
 };
+
+export const indexStringToNum = (url) => {
+  if (!url) return null;
+  const _urlIndex = url?.lastIndexOf('=');
+  const _index = url?.slice(_urlIndex + 1);
+  const _indexId = Number(_index);
+  return _indexId;
+};

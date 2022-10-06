@@ -4,9 +4,11 @@ import { useNavigate } from 'react-router-dom';
 
 import { getAlbums } from '../../reduxSlices/albumsSlice';
 import { getArtistInfo, mountArtist } from '../../reduxSlices/artistInfoSlice';
-import { getArtists, getNext, getPrev } from '../../reduxSlices/artistsSlice';
+import { getArtists } from '../../reduxSlices/artistsSlice';
 import { getTopTracks } from '../../reduxSlices/topTracksSlice';
 import { ArtistCard, Loader, Navbar } from '../../shared/components';
+import Pagination from '../../shared/components/Pagination';
+import { indexStringToNum } from '../../shared/utils';
 import './style.css';
 
 const MainPage = () => {
@@ -29,13 +31,13 @@ const MainPage = () => {
     if (!artistId) return null;
     dispatch(mountArtist());
     dispatch(getArtistInfo(artistId));
-    dispatch(getAlbums(artistId));
+    dispatch(getAlbums({ artistId: artistId, indexId: 0 }));
     dispatch(getTopTracks(artistId));
     navigate(`detailed/${artistId}`);
   };
 
   useEffect(() => {
-    dispatch(getArtists(searchValue));
+    dispatch(getArtists({ query: searchValue, indexId: 0 }));
   }, [dispatch, searchValue]);
 
   return (
@@ -80,20 +82,12 @@ const MainPage = () => {
             />
           ))}
       </div>
-      <div className="pagination">
-        <button
-          className={
-            prevPage === null ? 'button--inactive previous ' : 'previous pagination-button'
-          }
-          onClick={() => dispatch(getPrev(prevPage))}>
-          &laquo; Previous
-        </button>
-        <button
-          className={nextPage === null ? 'button--inactive next ' : 'next pagination-button'}
-          onClick={() => dispatch(getNext(nextPage))}>
-          Next &raquo;
-        </button>
-      </div>
+      <Pagination
+        getFunc={getArtists}
+        prevId={indexStringToNum(prevPage)}
+        nextId={indexStringToNum(nextPage)}
+        artistId={artistInfo.id}
+      />
     </div>
   );
 };
