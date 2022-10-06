@@ -4,8 +4,14 @@ import { useNavigate } from 'react-router-dom';
 
 import { getAlbums } from '../../reduxSlices/albumsSlice';
 import { unmountArtist } from '../../reduxSlices/artistInfoSlice';
-import { AlbumCard, ArtistInfo, Loader, Navbar, TopTrack } from '../../shared/components';
-import Pagination from '../../shared/components/Pagination';
+import {
+  AlbumCard,
+  ArtistInfo,
+  Loader,
+  Navbar,
+  Pagination,
+  TopTrack
+} from '../../shared/components';
 import { durationToRatio, fansNumToString, indexStringToNum } from '../../shared/utils/index';
 import './style.css';
 
