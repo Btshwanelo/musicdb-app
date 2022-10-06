@@ -7,7 +7,7 @@
   display: inline-block;
   box-sizing: border-box;
   -webkit-animation: rotation 1s linear infinite;
-  animation: rotation 1s linear infinite;
+          animation: rotation 1s linear infinite;
 }
 
 @-webkit-keyframes rotation {
@@ -26,4 +26,4 @@
   100% {
     transform: rotate(360deg);
   }
-} /*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */
