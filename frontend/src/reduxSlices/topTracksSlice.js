@@ -8,8 +8,8 @@ const initialState = {
 };
 
 /**
- * Get Year
- * @param {String} date
+ * Get Top Tracks
+ * @param {Number} artistId
  * @returns {String}
  */
 export const getTopTracks = createAsyncThunk('artist/getTopTracks', async (artistId, thunkAPI) => {

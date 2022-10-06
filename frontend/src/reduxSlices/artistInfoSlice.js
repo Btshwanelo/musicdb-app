@@ -8,9 +8,9 @@ const initialState = {
 };
 
 /**
- * Get Year
- * @param {String} date
- * @returns {String}
+ * Get Artist Info
+ * @param {Number} artistId
+ * @returns {Array}
  */
 export const getArtistInfo = createAsyncThunk(
   'artist/getArtistInfo',

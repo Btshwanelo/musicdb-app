@@ -45,6 +45,11 @@ export const fansNumToString = (fansNum) => {
   }
 };
 
+/**
+ * Extract index number from url
+ * @param {string} url
+ * @returns {Number}
+ */
 export const indexStringToNum = (url) => {
   if (!url) return null;
   const _urlIndex = url?.lastIndexOf('=');

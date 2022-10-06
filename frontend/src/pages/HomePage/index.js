@@ -6,8 +6,7 @@ import { getAlbums } from '../../reduxSlices/albumsSlice';
 import { getArtistInfo, mountArtist } from '../../reduxSlices/artistInfoSlice';
 import { getArtists } from '../../reduxSlices/artistsSlice';
 import { getTopTracks } from '../../reduxSlices/topTracksSlice';
-import { ArtistCard, Loader, Navbar } from '../../shared/components';
-import Pagination from '../../shared/components/Pagination';
+import { ArtistCard, Loader, Navbar,Pagination } from '../../shared/components';
 import { indexStringToNum } from '../../shared/utils';
 import './style.css';
 
